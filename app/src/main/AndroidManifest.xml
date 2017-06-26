@@ -1,0 +1,46 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sugarizer.sugarizerdeploymenttoolapp">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Translucent">
+
+        <activity
+            android:name=".EmptyActivity"
+            android:theme="@style/Theme.AppCompat.Translucent">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".PingActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
+        <service
+            android:name="com.sugarizer.sugarizerdeploymenttoolapp.BroadcastService"/>
+
+        <receiver
+            android:name="com.sugarizer.sugarizerdeploymenttoolapp.Broadcast"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_PING"/>
+                <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_LOG"/>
+                <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_PROGRESS"/>
+                <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_STOP"/>
+
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
