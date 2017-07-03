@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="viewModel" type="com.sugarizer.sugarizerdeploymenttoolapp.xyscreen.XYScreenViewModel"/>
+    </data>
+    <RelativeLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/xText"
+            android:text="X:"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/yText"
+            android:text="Y:"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/xText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/x"
+            android:text="@{viewModel.x}"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/xText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/y"
+            android:text="@{viewModel.y}"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/x"
+            android:layout_toRightOf="@id/yText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/touch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+</layout>

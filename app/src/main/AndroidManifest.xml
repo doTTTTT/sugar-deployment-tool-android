@@ -3,6 +3,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -26,6 +27,14 @@
             android:name=".PingActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
+        <activity
+            android:name=".InputActivity"
+            android:theme="@style/Theme.AppCompat.Translucent"/>
+
+        <activity
+            android:name=".xyscreen.XYScreen"
+            android:theme="@style/Theme.AppCompat.Translucent"/>
+
         <service
             android:name="com.sugarizer.sugarizerdeploymenttoolapp.BroadcastService"/>
 
@@ -37,6 +46,9 @@
                 <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_LOG"/>
                 <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_PROGRESS"/>
                 <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_STOP"/>
+                <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_START_SERVER"/>
+                <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_SEND_MESSAGE_BACK"/>
+                <action android:name="com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_X_Y_SCREEN"/>
 
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>

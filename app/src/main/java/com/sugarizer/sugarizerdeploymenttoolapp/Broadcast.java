@@ -1,19 +1,20 @@
 package com.sugarizer.sugarizerdeploymenttoolapp;
 
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.provider.Settings;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.view.WindowManager;
+
+import com.sugarizer.sugarizerdeploymenttoolapp.xyscreen.XYScreen;
+
+import java.util.Observable;
+import java.util.Observer;
 
 
-public class Broadcast extends BroadcastReceiver {
+public class Broadcast extends BroadcastReceiver implements Observer {
     private static final String TAG = Broadcast.class.getSimpleName();
 
     private static final int ID_NOTIFICATION_LOG = 1;
@@ -26,6 +27,9 @@ public class Broadcast extends BroadcastReceiver {
     public static final String ACTION_LOG = "com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_LOG";
     public static final String ACTION_PROGRESS = "com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_PROGRESS";
     public static final String ACTION_STOP = "com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_STOP";
+    public static final String ACTION_START_SERVER = "com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_START_SERVER";
+    public static final String ACTION_SEND_MESSAGE_BACK = "com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_SEND_MESSAGE_BACK";
+    public static final String ACTION_X_Y_SCREEN = "com.sugarizer.sugarizerdeploymentoolapp.Broadcast.ACTION_X_Y_SCREEN";
 
     public static final String EXTRA_LOG = "extra_log";
 
@@ -68,6 +72,20 @@ public class Broadcast extends BroadcastReceiver {
             case ACTION_STOP:
                 NotificationManagerCompat.from(context).cancel(1);
                 break;
+            case ACTION_START_SERVER:
+                SocketConnection.getInstance().addObserver(this);
+                break;
+            case ACTION_SEND_MESSAGE_BACK:
+                break;
+            case ACTION_X_Y_SCREEN:
+                context.startActivity(new Intent(context, XYScreen.class));
+                break;
         }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        Log.d("SocketServer", "MessageReceive");
+        Log.d("SocketServer", "" + arg);
     }
 }
